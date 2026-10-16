@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: lt.viko.eif
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [app-name, data, data-jdbc, gitignore, h2, http-client, java, java-application, jdbc-hikari, junit, logback, management, maven, maven-enforcer-plugin, micronaut-aot, micronaut-http-validation, micronaut-processing-compiler-args, netty-server, properties, readme, serialization-jackson, static-resources, validation]

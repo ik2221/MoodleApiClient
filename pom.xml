@@ -70,6 +70,19 @@
       <scope>compile</scope>
     </dependency>
 
+    <!-- Flyway DB for database migrations -->
+    <dependency>
+      <groupId>io.micronaut.flyway</groupId>
+      <artifactId>micronaut-flyway</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
     <dependency>
       <groupId>io.micronaut.validation</groupId>
       <artifactId>micronaut-validation</artifactId>
@@ -88,10 +101,14 @@
       <scope>runtime</scope>
     </dependency>
 
+    <!--
+      Note:
+      No runtime scope, because the H2 classes are needed for the
+      H2TcpServer bean.
+    -->
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <scope>runtime</scope>
     </dependency>
 
     <dependency>

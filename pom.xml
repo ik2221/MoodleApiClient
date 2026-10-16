@@ -138,6 +138,22 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
+        <executions>
+          <execution>
+            <!--
+              We're using application.properties, not YAML,
+              so this can be disabled entirely. Otherwise,
+              it errors.
+
+              If you are planning to use application.yml
+              instead of application.properties, you will
+              need to configure the SnakeYAML dependency
+              explicitly.
+            -->
+            <id>micronaut-enforce</id>
+            <phase>none</phase> <!-- Disables it entirely -->
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -146,7 +162,27 @@
           <!-- Uncomment to enable incremental compilation -->
           <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
 
-          <annotationProcessorPaths combine.self="override">
+          <!--
+              NOTE: Do not use `combine.self="override"`.
+
+              The combine.self="override" attribute tells Maven
+              to completely ignore any <annotationProcessorPaths>
+              defined in the parent POM (micronaut-parent) and
+              use only what you've listed.
+
+              The Micronaut parent POM already configures the
+              correct set of annotation processors for your
+              project. By using override, you're replacing that
+              carefully curated list with your own — and if your
+              list is missing a processor or has a version
+              mismatch, the whole chain fails.
+
+              The fix is simple: remove combine.self="override"
+              entirely. This lets Maven merge your paths with
+              the parent's defaults, ensuring all necessary
+              processors are present.
+          -->
+          <annotationProcessorPaths>
             <path>
               <groupId>io.micronaut</groupId>
               <artifactId>micronaut-inject-java</artifactId>

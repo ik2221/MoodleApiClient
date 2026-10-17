@@ -1,0 +1,8 @@
+Id,Description,Status,TimeCreated,TimeModified
+1,Switch application port to 8085; Moodle container is running at 8080,Done,2026-10-16 21:20:49,2026-10-17 13:18:18
+2,"Figure out if Moodle API supports @Header(""Authorization"") instead of query param token injection",To do,2026-10-17 13:52:11,2026-10-17 13:52:11
+3,Confirm the new moodle_api package works against a real Moodle Docker instance,Done,2026-10-17 14:36:56,2026-10-17 16:58:41
+4,Add Resilience with @Retryable,To do,2026-10-17 14:44:49,2026-10-17 14:44:49
+5,Handle API error responses,To do,2026-10-17 14:45:38,2026-10-17 14:45:38
+6,Extract only required data fields from grades JSON,In progress,2026-10-17 17:09:48,2026-10-17 17:09:57
+7,Update the H2 database schema for the grades data that we need to store,To do,2026-10-17 17:13:54,2026-10-17 17:13:54

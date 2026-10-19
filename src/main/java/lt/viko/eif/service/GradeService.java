@@ -26,6 +26,7 @@ public class GradeService {
     //
     public Mono<String> getGradesData(long courseId) {
         Publisher<String> rawJsonPublisher = apiClient.getRawGradesDataForCourse(courseId);
+        StringBuilder stringOutputBuilder = new StringBuilder();
 
         // Wrap the Publisher in a Mono to use .map()
         return Mono.from(rawJsonPublisher).map(jsonString -> {
@@ -35,18 +36,37 @@ public class GradeService {
 
                 // The path: /usergrades/0/courseid --> int
                 // FIXME (not sure): replace with `JsonNode.at()` method call
-                JsonNode userGrades = root.get("usergrades");
-                JsonNode userGradesFirstGrade = userGrades.get(0);
-                JsonNode firstGradeCourseIdNode = userGradesFirstGrade.get("courseid");
-                int extractedCourseId = firstGradeCourseIdNode.asInt();
 
-                // === Return raw string === //
-                return "ExtractedCourseId: " + extractedCourseId + "\n";
+                // Iterate over array: /usergrades/
+                JsonNode userGrades = root.get("usergrades");
+                if (userGrades == null) {
+                    return Utils.showStringError("JSON node \"usergrades\" is null. Processing stopped.");
+                }
+
+                int userGradeIndex = 0;
+                for (JsonNode userGrade : userGrades) {
+                    stringOutputBuilder.append("User grade ").append(userGradeIndex).append("\n");
+
+                    JsonNode userGradeCourseId = userGrade.get("courseid");
+                    JsonNode userGradeUserId = userGrade.get("userid");
+                    JsonNode userGradeUserFullName = userGrade.get("userfullname");
+                    // TODO: iterate over array: /usergrades/{i}/gradeitems
+
+                    stringOutputBuilder.append("course_id: ").append(userGradeCourseId.asInt()).append("\n");
+                    stringOutputBuilder.append("user_id: ").append(userGradeUserId.asInt()).append("\n");
+                    stringOutputBuilder.append("user_full_name: ").append(userGradeUserFullName.asString()).append("\n");
+                    stringOutputBuilder.append("\n");
+
+                    userGradeIndex++;
+                }
+
+                // === Return raw string (content-type: text/plain) === //
+                return stringOutputBuilder.toString();
 
             } catch (JacksonException e) {
-                return Utils.showError(e, "JSON processing exception");
+                return Utils.showThrowableError(e, "JSON processing exception");
             } catch (NullPointerException e) {
-                return Utils.showError(e, "JSON null error");
+                return Utils.showThrowableError(e, "JSON null error");
             }
         });
     }

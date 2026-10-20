@@ -57,6 +57,7 @@
       <scope>compile</scope>
     </dependency>
 
+    <!-- Micronaut Data JDBC for repository layer -->
     <dependency>
       <groupId>io.micronaut.data</groupId>
       <artifactId>micronaut-data-jdbc</artifactId>
@@ -76,6 +77,7 @@
       <scope>compile</scope>
     </dependency>
 
+    <!-- HikariCP for connection pooling -->
     <dependency>
       <groupId>io.micronaut.sql</groupId>
       <artifactId>micronaut-jdbc-hikari</artifactId>
@@ -114,6 +116,8 @@
     </dependency>
 
     <!--
+      H2 Database Driver.
+
       Note:
       No runtime scope, because the H2 classes are needed for the
       H2TcpServer bean.
@@ -121,6 +125,13 @@
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
+    </dependency>
+
+    <!-- Lombok generates boilerplate code for DTO classes -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>compile</scope>
     </dependency>
 
     <dependency>

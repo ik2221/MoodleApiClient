@@ -6,9 +6,9 @@ import io.micronaut.data.annotation.GeneratedValue;
 
 @MappedEntity("users")
 public record User(
-    @Id @GeneratedValue Long id,
-    String firstName,
-    String lastName,
-    String email
+        @Id @GeneratedValue Long id,
+        String firstName,
+        String lastName,
+        String email
 ) {
 }

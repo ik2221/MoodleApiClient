@@ -20,7 +20,12 @@ public class UserRepositoryTest {
     @Test
     void shouldSaveAndReadUser() {
         // Save
-        User saved = userRepository.save(new User(null, "John", "Doe", "j.doe@mail.xyz"));
+        User saved = userRepository.save(new User(
+                null,
+                "John",
+                "Doe",
+                "j.doe@mail.xyz")
+        );
         assertNotNull(saved.id());
 
         // Read back

@@ -5,6 +5,7 @@ import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;
 import io.micronaut.data.annotation.MappedProperty;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 
 @MappedEntity("grades")
@@ -14,7 +15,7 @@ public record Grade(
         @MappedProperty("course_id")              Long courseId,
         @MappedProperty("student_id")             Long studentId,
         @MappedProperty("item_name")              String itemName,
-        @MappedProperty("points")                 Double points,
+        @MappedProperty("points")                 BigDecimal points,
         @MappedProperty("date_graded")            Instant dateGraded
 ) {
 }

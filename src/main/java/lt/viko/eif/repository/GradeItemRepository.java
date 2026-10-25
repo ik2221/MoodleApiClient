@@ -11,7 +11,7 @@ import org.jspecify.annotations.NullMarked;
 import java.util.List;
 import java.util.Optional;
 
-@JdbcRepository(dialect = Dialect.H2)
+@JdbcRepository(dialect = Dialect.POSTGRES)
 public interface GradeItemRepository extends CrudRepository<GradeItem, Long> {
     List<GradeItem> findByItemName(String itemName);
     List<GradeItem> findByItemType(String itemType);

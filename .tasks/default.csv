@@ -4,6 +4,8 @@ Id,Description,Status,TimeCreated,TimeModified
 3,Confirm the new moodle_api package works against a real Moodle Docker instance,Done,2026-10-17 14:36:56,2026-10-17 16:58:41
 4,Add Resilience with @Retryable,To do,2026-10-17 14:44:49,2026-10-17 14:44:49
 5,Handle API error responses,To do,2026-10-17 14:45:38,2026-10-17 14:45:38
-6,Switch database: H2 -> PostgreSQL,In progress,2026-10-22 13:21:30,2026-10-25 12:19:08
-7,"DB schema, plan, or a diagram",In progress,2026-10-22 13:22:07,2026-10-25 12:19:00
-8,Define all Moodle API functions we need,In progress,2026-10-22 13:22:34,2026-10-25 12:19:04
+6,Switch database: H2 -> PostgreSQL,Done,2026-10-22 13:21:30,2026-10-25 19:48:12
+7,"DB schema, plan, or a diagram",Done,2026-10-22 13:22:07,2026-10-25 19:46:40
+8,Define all Moodle API functions we need,Done,2026-10-22 13:22:34,2026-10-25 19:46:43
+9,Write basic declarative repositories for the new DB schema,Done,2026-10-25 19:48:00,2026-10-25 21:35:10
+10,Rename package 'dto' -> 'entity',Done,2026-10-25 20:06:33,2026-10-25 20:25:53

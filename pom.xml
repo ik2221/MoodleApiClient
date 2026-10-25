@@ -97,6 +97,13 @@
       <scope>compile</scope>
     </dependency>
 
+    <!-- Flyway needs this to support PostgreSQL -->
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-database-postgresql</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
     <dependency>
       <groupId>io.micronaut.validation</groupId>
       <artifactId>micronaut-validation</artifactId>
@@ -115,16 +122,11 @@
       <scope>runtime</scope>
     </dependency>
 
-    <!--
-      H2 Database Driver.
-
-      Note:
-      No runtime scope, because the H2 classes are needed for the
-      H2TcpServer bean.
-    -->
+    <!-- PostgreSQL database driver -->
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>runtime</scope>
     </dependency>
 
     <!-- Lombok generates boilerplate code for DTO classes -->
